@@ -1,0 +1,1 @@
+# A basic blog API with FastAPI a Python's web framework 
