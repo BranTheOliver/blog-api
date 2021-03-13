@@ -4,6 +4,7 @@ from typing import List
 
 from . import schemas
 from . import models
+from .hashing import Hash
 from .database import engine, SessionLocal
 
 
@@ -83,7 +84,7 @@ def update(id, request: schemas.Blog, db: Session = Depends(get_db)):
 @app.post("/user")
 def create_user(request: schemas.User, db: Session = Depends(get_db)):
     new_user = models.User(
-        name=request.name, email=request.email, password=request.password
+        name=request.name, email=request.email, password=Hash().hash(request.password)
     )
     db.add(new_user)
     db.commit()
