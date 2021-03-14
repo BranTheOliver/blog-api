@@ -7,3 +7,6 @@ class Hash:
 
     def hash(self, password):
         return self.pwd_ctx.hash(password)
+
+    def verify(self, plain_password, hashed_password):
+        return self.pwd_ctx.verify(plain_password, hashed_password)
